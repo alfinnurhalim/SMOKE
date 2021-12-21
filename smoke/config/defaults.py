@@ -18,17 +18,17 @@ _C.MODEL.WEIGHT = ""
 
 _C.INPUT = CN()
 # Size of the smallest side of the image during training
-_C.INPUT.HEIGHT_TRAIN = 384
+_C.INPUT.HEIGHT_TRAIN = 1024
 # Maximum size of the side of the image during training
-_C.INPUT.WIDTH_TRAIN = 1280
+_C.INPUT.WIDTH_TRAIN = 1024
 # Size of the smallest side of the image during testing
-_C.INPUT.HEIGHT_TEST = 384
+_C.INPUT.HEIGHT_TEST = 1024
 # Maximum size of the side of the image during testing
-_C.INPUT.WIDTH_TEST = 1280
+_C.INPUT.WIDTH_TEST = 1024
 # Values to be used for image normalization
-_C.INPUT.PIXEL_MEAN = [0.485, 0.456, 0.406]  # kitti
+_C.INPUT.PIXEL_MEAN = [0.1709, 0.4101, 0.4664]  # kitti
 # Values to be used for image normalization
-_C.INPUT.PIXEL_STD = [0.229, 0.224, 0.225]  # kitti
+_C.INPUT.PIXEL_STD = [0.0780, 0.1944, 0.1807]  # kitti
 # Convert image to BGR format
 _C.INPUT.TO_BGR = True
 # Flip probability
@@ -50,7 +50,7 @@ _C.DATASETS.TRAIN_SPLIT = ""
 # test split for dataset
 _C.DATASETS.TEST_SPLIT = ""
 _C.DATASETS.DETECT_CLASSES = ("Car",)
-_C.DATASETS.MAX_OBJECTS = 30
+_C.DATASETS.MAX_OBJECTS = 100
 
 # -----------------------------------------------------------------------------
 # DataLoader
@@ -113,12 +113,12 @@ _C.MODEL.SMOKE_HEAD.NUM_CHANNEL = 256
 _C.MODEL.SMOKE_HEAD.LOSS_WEIGHT = (1., 10.)
 # Reference car size in (length, height, width)
 # for (car, cyclist, pedestrian)
-_C.MODEL.SMOKE_HEAD.DIMENSION_REFERENCE = ((3.88, 1.63, 1.53),
-                                           (1.78, 1.70, 0.58),
-                                           (0.88, 1.73, 0.67))
+_C.MODEL.SMOKE_HEAD.DIMENSION_REFERENCE = ((0.26822247706422014 0.6230474162141921 0.3184621325594458),
+                                           (0.26822247706422014 0.6230474162141921 0.3184621325594458),
+                                           (0.26822247706422014 0.6230474162141921 0.3184621325594458))
 # Reference depth
-_C.MODEL.SMOKE_HEAD.DEPTH_REFERENCE = (28.01, 16.32)
-_C.MODEL.SMOKE_HEAD.USE_NMS = False
+_C.MODEL.SMOKE_HEAD.DEPTH_REFERENCE = (2.018772233664108 0.7207973722289481)
+_C.MODEL.SMOKE_HEAD.USE_NMS = True
 
 # ---------------------------------------------------------------------------- #
 # Solver
@@ -161,7 +161,7 @@ _C.TEST.DETECTIONS_THRESHOLD = 0.25
 # Misc options
 # ---------------------------------------------------------------------------- #
 # Directory where output files are written
-_C.OUTPUT_DIR = "./tools/logs"
+_C.OUTPUT_DIR = "./tools/fish"
 # Set seed to negative to fully randomize everything.
 # Set seed to positive to use a fixed seed. Note that a fixed seed does not
 # guarantee fully deterministic behavior.
